@@ -1,8 +1,8 @@
 //
 //  Persistence.swift
-//  TaskManagement
+//  TodoTaskManagement
 //
-//  Created by Nagaraj, Vignesh (Cognizant) on 04/03/25.
+//  Created by Nagaraj, Vignesh (Cognizant) on 10/03/25.
 //
 
 import CoreData
@@ -14,10 +14,7 @@ struct PersistenceController {
     static let preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+        
         do {
             try viewContext.save()
         } catch {
@@ -32,7 +29,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "TaskManagement")
+        container = NSPersistentContainer(name: "TodoTaskManagement")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

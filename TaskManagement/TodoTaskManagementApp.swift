@@ -1,19 +1,19 @@
 //
-//  TaskManagementApp.swift
-//  TaskManagement
+//  TodoTaskManagementApp.swift
+//  TodoTaskManagement
 //
-//  Created by Nagaraj, Vignesh (Cognizant) on 04/03/25.
+//  Created by Nagaraj, Vignesh (Cognizant) on 10/03/25.
 //
 
 import SwiftUI
 
 @main
-struct TaskManagementApp: App {
+struct TodoTaskManagementApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TaskList(viewContext: persistenceController.container.viewContext)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
